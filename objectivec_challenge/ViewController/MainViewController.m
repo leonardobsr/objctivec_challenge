@@ -6,6 +6,7 @@
 //  Copyright © 2020 Leonardo Reis. All rights reserved.
 //
 
+#import "HTTPRequest.h"
 #import "MainViewController.h"
 #import "DetailViewController.h"
 
@@ -40,6 +41,16 @@
     self.loading.hidesWhenStopped = YES;
 //    [self.loading startAnimating];
     [self.loading stopAnimating];
+    [self fetchMoviesUsingJSON];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController.navigationBar.items[0] setTitle:@"Movies"];
+}
+
+- (void)fetchMoviesUsingJSON {
+    [HTTPRequest getNowPlaying:1 completion:^(NSString * _Nonnull strings, NSError * _Nonnull err) {
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -87,8 +98,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"MovieDetail"]) {
       DetailViewController *d = (DetailViewController *)segue.destinationViewController;
-//      d.title = segue.identifier;
-//      d.itemForDetail = item;
     }
 }
 

@@ -27,4 +27,8 @@
     [self.loading stopAnimating];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController.navigationBar.items[0] setTitle:@" "];
+}
+
 @end

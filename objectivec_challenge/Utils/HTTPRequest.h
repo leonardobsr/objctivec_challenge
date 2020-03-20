@@ -7,20 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TMBMovie.h"
+#import "TMBGenre.h"
+#import "TMBCompany.h"
+#import "TMBCountry.h"
+#import "TMBLanguage.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HTTPRequest : NSObject
 
-// getNowPlaying
-// getPopular
-// getMovie
+@property NSString *baseUrl;
 
-// Get Details (Company)
-// Get Movie List (Genre)
-// Get Countries
-// Get Languages
-
++ (void)getNowPlaying:(NSInteger) page completion:(void (^)(NSString *, NSError *))completion;
++ (void)getPopular:(NSInteger) page completion:(void (^)(NSString *, NSError *))completion;
++ (void)getMovieGenres:(void (^)(NSString *, NSError *))completion;
 
 @end
 
