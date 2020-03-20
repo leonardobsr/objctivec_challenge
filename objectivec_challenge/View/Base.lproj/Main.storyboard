@@ -7,50 +7,88 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Movies-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="Vz1-nk-eCi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZX2-p9-l9J" customClass="MovieListViewController">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ooB-CQ-YCQ">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a48-Ya-gWC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v2N-ur-VLe">
-                                        <rect key="frame" x="65" y="-36" width="240" height="128"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="voT-i4-iHr" customClass="MovieListViewController">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YMm-Az-jwc">
+                                        <rect key="frame" x="12" y="12" width="390" height="750"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="DJg-6J-6DI" customClass="MovieListTableViewCell">
+                                                <rect key="frame" x="0.0" y="28" width="390" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DJg-6J-6DI" id="OLk-q1-aFi">
+                                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <segue destination="Woo-tX-PCu" kind="show" identifier="MovieDetail" id="BXs-zU-x8a"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
                                 </subviews>
-                                <viewLayoutGuide key="contentLayoutGuide" id="qOm-kc-SwO"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="vNm-vi-Axi"/>
-                            </scrollView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="YMm-Az-jwc" firstAttribute="top" secondItem="a48-Ya-gWC" secondAttribute="top" constant="12" id="9Dx-7M-iDv"/>
+                                    <constraint firstAttribute="trailing" secondItem="YMm-Az-jwc" secondAttribute="trailing" constant="12" id="AWE-A7-7Ra"/>
+                                    <constraint firstItem="YMm-Az-jwc" firstAttribute="leading" secondItem="a48-Ya-gWC" secondAttribute="leading" constant="12" id="k67-rR-Pai"/>
+                                    <constraint firstAttribute="bottom" secondItem="YMm-Az-jwc" secondAttribute="bottom" constant="12" id="rlu-7m-Qzu"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="4bC-Tn-ebX">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="4bC-Tn-ebX" firstAttribute="centerX" secondItem="Vz1-nk-eCi" secondAttribute="centerX" id="1xk-03-kwO"/>
+                            <constraint firstItem="a48-Ya-gWC" firstAttribute="leading" secondItem="5U5-7w-t1N" secondAttribute="leading" id="23v-IC-OM2"/>
+                            <constraint firstItem="a48-Ya-gWC" firstAttribute="top" secondItem="5U5-7w-t1N" secondAttribute="top" id="5C0-jr-Lao"/>
+                            <constraint firstItem="5U5-7w-t1N" firstAttribute="bottom" secondItem="a48-Ya-gWC" secondAttribute="bottom" id="HZ2-8v-o1Y"/>
+                            <constraint firstItem="a48-Ya-gWC" firstAttribute="leading" secondItem="5U5-7w-t1N" secondAttribute="leading" id="cRg-V3-wxT"/>
+                            <constraint firstItem="5U5-7w-t1N" firstAttribute="trailing" secondItem="a48-Ya-gWC" secondAttribute="trailing" id="h0j-3T-2bg"/>
+                            <constraint firstItem="4bC-Tn-ebX" firstAttribute="centerY" secondItem="Vz1-nk-eCi" secondAttribute="centerY" id="npp-DK-4of"/>
+                            <constraint firstItem="5U5-7w-t1N" firstAttribute="trailing" secondItem="a48-Ya-gWC" secondAttribute="trailing" id="oWY-pc-dQm"/>
+                            <constraint firstItem="5U5-7w-t1N" firstAttribute="bottom" secondItem="a48-Ya-gWC" secondAttribute="bottom" id="vnZ-3M-S26"/>
+                            <constraint firstItem="a48-Ya-gWC" firstAttribute="top" secondItem="5U5-7w-t1N" secondAttribute="top" id="xJK-x1-Pzq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5U5-7w-t1N"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gJs-Ey-UEK"/>
+                    <navigationItem key="navigationItem" title="Movies" largeTitleDisplayMode="always" id="gJs-Ey-UEK"/>
+                    <connections>
+                        <outlet property="contentView" destination="a48-Ya-gWC" id="e6G-n7-YEz"/>
+                        <outlet property="loading" destination="4bC-Tn-ebX" id="1h0-GJ-QAB"/>
+                        <outlet property="tableView" destination="YMm-Az-jwc" id="vLb-zf-Ftw"/>
+                        <outlet property="view" destination="Vz1-nk-eCi" id="U6R-04-Up5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="88.392857142857139"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Detail-->
+        <scene sceneID="Nd1-Oj-awA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Detail" id="Woo-tX-PCu" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="iTD-OY-aHP"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wdr-MV-TJf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2208" y="92"/>
+        </scene>
+        <!--Custom Navigation View Controller-->
         <scene sceneID="okh-h2-ji3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BPV-99-YPa" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BPV-99-YPa" customClass="CustomNavigationViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ewa-nc-tlP">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

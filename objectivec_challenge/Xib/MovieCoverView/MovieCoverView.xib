@@ -7,25 +7,40 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieCoverViewController"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieCoverView">
+            <connections>
+                <outlet property="imageView" destination="NN3-Nq-MDT" id="I9h-OK-0ok"/>
+                <outlet property="indicator" destination="nCZ-nh-nJa" id="adw-jz-EuT"/>
+                <outlet property="view" destination="iN0-l3-epB" id="FtD-jB-pfN"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="128" height="194"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wx7-5g-Pj5" userLabel="movieCover">
-                    <rect key="frame" x="-56" y="33" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover" translatesAutoresizingMaskIntoConstraints="NO" id="NN3-Nq-MDT">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </imageView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="2wK-O8-W6U" userLabel="loading">
-                    <rect key="frame" x="54" y="87" width="20" height="20"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nCZ-nh-nJa">
+                    <rect key="frame" x="197" y="438" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </activityIndicatorView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="NN3-Nq-MDT" firstAttribute="top" secondItem="TkS-Jz-Pnd" secondAttribute="top" constant="-44" id="8cg-BL-CeW"/>
+                <constraint firstItem="NN3-Nq-MDT" firstAttribute="leading" secondItem="TkS-Jz-Pnd" secondAttribute="leading" id="BAI-8e-uK7"/>
+                <constraint firstItem="TkS-Jz-Pnd" firstAttribute="trailing" secondItem="NN3-Nq-MDT" secondAttribute="trailing" id="NgQ-Dx-z0k"/>
+                <constraint firstItem="TkS-Jz-Pnd" firstAttribute="bottom" secondItem="NN3-Nq-MDT" secondAttribute="bottom" constant="-34" id="TAZ-54-jXw"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-18.840579710144929" y="-158.03571428571428"/>
+            <viewLayoutGuide key="safeArea" id="TkS-Jz-Pnd"/>
+            <point key="canvasLocation" x="139" y="141"/>
         </view>
     </objects>
+    <resources>
+        <image name="cover" width="192" height="291"/>
+    </resources>
 </document>

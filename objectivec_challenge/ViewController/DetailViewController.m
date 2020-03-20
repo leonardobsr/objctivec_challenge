@@ -6,9 +6,25 @@
 //  Copyright © 2020 Leonardo Reis. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DetailViewController.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController ()
 
+@end
+
+@implementation DetailViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    self.navigationItem.title = @"Movie Details";
+
+//    self.movieHeaderView.hidden = YES;
+//    self.overviewLabel.hidden = YES;
+//    self.textView.hidden = YES;
+    self.loading.hidesWhenStopped = YES;
+    [self.loading stopAnimating];
+}
 
 @end

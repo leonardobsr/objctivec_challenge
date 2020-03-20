@@ -7,40 +7,73 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieHeaderViewController"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieHeaderView">
+            <connections>
+                <outlet property="hStackView" destination="D3C-t7-OdT" id="i0J-GB-BK1"/>
+                <outlet property="movieCoverView" destination="gwr-wd-giN" id="laa-Mc-diQ"/>
+                <outlet property="movieRatingView" destination="tmg-0V-hGJ" id="89p-nu-nsE"/>
+                <outlet property="textLabel" destination="ZTa-Ot-8ly" id="mmc-7E-jfo"/>
+                <outlet property="titleLabel" destination="RKd-yT-oab" id="osv-Nb-kFo"/>
+                <outlet property="vStackView" destination="kff-hN-2nw" id="Bwh-vm-fNk"/>
+                <outlet property="view" destination="F1h-Vu-IU5" id="fvF-3Y-7W0"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="F1h-Vu-IU5">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BSd-9a-pOc">
-                    <rect key="frame" x="152" y="348" width="110" height="169"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="D3C-t7-OdT">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ip4-HF-zS1" userLabel="titleLabel">
-                            <rect key="frame" x="0.0" y="0.0" width="110" height="20.5"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GUn-A8-YXg" userLabel="genreLabel">
-                            <rect key="frame" x="0.0" y="20.5" width="110" height="20.5"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ay2-bx-UIx" customClass="MovieRatingViewController">
-                            <rect key="frame" x="0.0" y="41" width="110" height="128"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwr-wd-giN" customClass="MovieCoverView">
+                            <rect key="frame" x="0.0" y="0.0" width="128" height="818"/>
+                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="128" id="g2S-OX-WsD"/>
+                            </constraints>
                         </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="kff-hN-2nw">
+                            <rect key="frame" x="128" y="0.0" width="286" height="818"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKd-yT-oab">
+                                    <rect key="frame" x="0.0" y="0.0" width="286" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTa-Ot-8ly">
+                                    <rect key="frame" x="0.0" y="32.5" width="286" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tmg-0V-hGJ" customClass="MovieRatingView">
+                                    <rect key="frame" x="0.0" y="65" width="286" height="753"/>
+                                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                            </subviews>
+                        </stackView>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="kff-hN-2nw" secondAttribute="bottom" id="NSh-Ct-kB4"/>
+                        <constraint firstItem="gwr-wd-giN" firstAttribute="top" secondItem="D3C-t7-OdT" secondAttribute="top" id="RRM-cg-aoQ"/>
+                        <constraint firstAttribute="bottom" secondItem="gwr-wd-giN" secondAttribute="bottom" id="rBY-pY-AG3"/>
+                    </constraints>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="D3C-t7-OdT" firstAttribute="trailing" secondItem="F1h-Vu-IU5" secondAttribute="trailing" id="Ndp-f8-den"/>
+                <constraint firstItem="D3C-t7-OdT" firstAttribute="bottom" secondItem="F1h-Vu-IU5" secondAttribute="bottom" constant="-34" id="PwH-yx-jCv"/>
+                <constraint firstItem="D3C-t7-OdT" firstAttribute="leading" secondItem="F1h-Vu-IU5" secondAttribute="leading" id="RW9-cy-0ju"/>
+                <constraint firstItem="D3C-t7-OdT" firstAttribute="top" secondItem="F1h-Vu-IU5" secondAttribute="top" constant="44" id="Ueg-zW-5AH"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="139" y="80"/>
+            <viewLayoutGuide key="safeArea" id="9lI-Ma-yMS"/>
+            <point key="canvasLocation" x="122" y="-71"/>
         </view>
     </objects>
 </document>

@@ -6,18 +6,14 @@
 //  Copyright © 2020 Leonardo Reis. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import <UIKit/UIKit.h>
+#import "MovieHeaderView.h"
 
-@interface DetailViewController ()
+@interface DetailViewController : UIViewController
 
-@end
-
-@implementation DetailViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
+@property (weak, nonatomic) IBOutlet MovieHeaderView *movieHeaderView;
+@property (weak, nonatomic) IBOutlet UILabel *overviewLabel;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loading;
 
 @end
