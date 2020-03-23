@@ -17,18 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     self.navigationItem.title = @"Movie Details";
 
-//    self.movieHeaderView.hidden = YES;
-//    self.overviewLabel.hidden = YES;
-//    self.textView.hidden = YES;
     self.loading.hidesWhenStopped = YES;
     [self.loading stopAnimating];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController.navigationBar.items[0] setTitle:@" "];
+    [self.navigationController.navigationBar.items[0] setTitle:@""];
 }
 
 @end

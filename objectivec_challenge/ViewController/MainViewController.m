@@ -28,9 +28,10 @@
     
     popularMovies = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
     
-    self.navigationItem.title = @"Movies";
     self.navigationController.navigationBar.prefersLargeTitles = YES;
-    
+
+    self.navigationItem.title = @"Movies";
+
     self.navigationItem.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.navigationItem.searchController.searchBar.delegate = self;
     [self.navigationItem.searchController.searchBar sizeToFit];
@@ -49,8 +50,38 @@
 }
 
 - (void)fetchMoviesUsingJSON {
-    [HTTPRequest getNowPlaying:1 completion:^(NSString * _Nonnull strings, NSError * _Nonnull err) {
-    }];
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_group_enter(group);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [HTTPRequest getGenres:^(NSArray * _Nonnull strings, NSError * _Nonnull err) {
+            NSLog(@"1 done %@", strings);
+            dispatch_group_leave(group);
+        }];
+    });
+
+    dispatch_group_enter(group);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [HTTPRequest getNowPlaying:1 completion:^(NSArray * _Nonnull strings, NSError * _Nonnull err) {
+            NSLog(@"2 done %@", strings);
+            dispatch_group_leave(group);
+        }];
+    });
+
+    dispatch_group_enter(group);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [HTTPRequest getPopular:1 completion:^(NSArray * _Nonnull strings, NSError * _Nonnull err) {
+            NSLog(@"3 done %@", strings);
+            dispatch_group_leave(group);
+        }];
+    });
+
+    dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        NSLog(@"finally!");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    });
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

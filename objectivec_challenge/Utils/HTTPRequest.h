@@ -17,11 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HTTPRequest : NSObject
 
-@property NSString *baseUrl;
-
-+ (void)getNowPlaying:(NSInteger) page completion:(void (^)(NSString *, NSError *))completion;
-+ (void)getPopular:(NSInteger) page completion:(void (^)(NSString *, NSError *))completion;
-+ (void)getMovieGenres:(void (^)(NSString *, NSError *))completion;
++ (void)getGenres:(void (^)(NSArray *, NSError *))completion;
++ (void)getNowPlaying:(NSInteger) page completion:(void (^)(NSArray *, NSError *))completion;
++ (void)getPopular:(NSInteger) page completion:(void (^)(NSArray *, NSError *))completion;
 
 @end
 

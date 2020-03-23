@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="2208" y="92"/>
         </scene>
-        <!--Custom Navigation View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="okh-h2-ji3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BPV-99-YPa" customClass="CustomNavigationViewController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BPV-99-YPa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ewa-nc-tlP">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
