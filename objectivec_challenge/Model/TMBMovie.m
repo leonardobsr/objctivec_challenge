@@ -1,11 +1,11 @@
+////
+////  Movie.m
+////  objectivec_challenge
+////
+////  Created by Leonardo Reis on 19/03/20.
+////  Copyright © 2020 Leonardo Reis. All rights reserved.
+////
 //
-//  Movie.m
-//  objectivec_challenge
-//
-//  Created by Leonardo Reis on 19/03/20.
-//  Copyright © 2020 Leonardo Reis. All rights reserved.
-//
-
 //#import "TMBMovie.h"
 //#import "TMBGenre.m"
 //#import "TMBCompany.m"
@@ -16,9 +16,9 @@
 //#define λ(decl, expr) (^(decl) { return (expr); })
 //
 //// nil → NSNull conversion for JSON dictionaries
-////static id NSNullify(id _Nullable x) {
-////    return (x == nil || x == NSNull.null) ? NSNull.null : x;
-////}
+//static id NSNullify(id _Nullable x) {
+//    return (x == nil || x == NSNull.null) ? NSNull.null : x;
+//}
 //
 //NS_ASSUME_NONNULL_BEGIN
 //

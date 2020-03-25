@@ -30,6 +30,7 @@
 		1F8AFE4B242117EC0035D54F /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8AFE4D242117EC0035D54F /* Detail.storyboard */; };
 		1F8AFE61242145F70035D54F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AFE60242145F70035D54F /* MainViewController.m */; };
 		1F8AFE63242146700035D54F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AFE62242146700035D54F /* DetailViewController.m */; };
+		1FB9ED0C242A7B9B009207C4 /* TMBResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9ED0B242A7B9B009207C4 /* TMBResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,8 @@
 		1F8AFE60242145F70035D54F /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		1F8AFE62242146700035D54F /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		1F8AFE64242146820035D54F /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		1FB9ED0A242A7B9B009207C4 /* TMBResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMBResponse.h; sourceTree = "<group>"; };
+		1FB9ED0B242A7B9B009207C4 /* TMBResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMBResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 		1F8AFE42242114810035D54F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1FB9ED0A242A7B9B009207C4 /* TMBResponse.h */,
+				1FB9ED0B242A7B9B009207C4 /* TMBResponse.m */,
 				1F50509F2423D774000E42F2 /* TMBMovie.h */,
 				1F5050A02423D774000E42F2 /* TMBMovie.m */,
 				1F5050A22423D784000E42F2 /* TMBGenre.h */,
@@ -311,6 +316,7 @@
 				1F8AFE61242145F70035D54F /* MainViewController.m in Sources */,
 				1F5050B424240C16000E42F2 /* MovieListTableViewCell.m in Sources */,
 				1F5050962422C237000E42F2 /* MovieCoverView.m in Sources */,
+				1FB9ED0C242A7B9B009207C4 /* TMBResponse.m in Sources */,
 				1F5050A12423D774000E42F2 /* TMBMovie.m in Sources */,
 				1F5050A42423D784000E42F2 /* TMBGenre.m in Sources */,
 				1F5050912422BE94000E42F2 /* MovieRatingView.m in Sources */,
