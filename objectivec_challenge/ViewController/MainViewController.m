@@ -49,61 +49,24 @@
 }
 
 - (void)fetchMoviesUsingJSON {
-    [[HTTPRequest alloc] initWithParams:@"getGenres" params:nil];
-//    NSString *endpoint = HTTPRequest.endPoints[@"getGenres"];
-//    NSLog(@"endpoint %@", endpoint);
-//    NSDictionary *params = @{
-//        @"page": @1
-//    };
-//    NSLog(@"params %@", params);
-    
-
-//    await new API(endpoint, params).request()
-//        .then(response => {
-//            this.dataTable.items = response.body.result.items
-//            this.dataTable.totalItems = response.body.result.count
-//            this.search.ready = true
-//            this.dataTable.loading = false
-//        }, (e) => {
-//            this.$helpers.requestError(e)
-//        })
-//    [[[HTTPRequest alloc] initWithParams:@"getGenres" params:nil] ];
-//    dispatch_group_t group = dispatch_group_create();
-//
-//    dispatch_group_enter_Nullable(group);
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-//        [HTTPRequest getGenres:^(NSDictionary * _Nonnull strings, NSError * _Nonnull err) {
-//            NSLog(@"1 done %@", strings);
-//            dispatch_group_leave(group);
-//        }];
-//    });
-//
-//    dispatch_group_enter(group);
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-//        [HTTPRequest getNowPlaying:1 completion:^(NSDictionary * _Nonnull strings, NSError * _Nonnull err) {
-//            NSLog(@"2 done %@", strings[@"results"]);
-//            for (NSDictionary *movieDict in strings[@"results"]) {
-//                TMBMovie *movie = TMBMovie.new;
-//                [self->nowPlaying addObject:movie];
-//            }
-//            dispatch_group_leave(group);
-//        }];
-//    });
-//
-//    dispatch_group_enter(group);
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-//        [HTTPRequest getPopular:1 completion:^(NSDictionary * _Nonnull strings, NSError * _Nonnull err) {
-//            NSLog(@"3 done %@", strings);
-//            dispatch_group_leave(group);
-//        }];
-//    });
-//
-//    dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-//        NSLog(@"finally!");
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.tableView reloadData];
-//        });
-//    });
+    NSMutableDictionary *endpointParams = [[NSMutableDictionary alloc] initWithDictionary:[HTTPRequest getEndPointParams:EndPointGetPopular]];
+    endpointParams[@"language"] = @"en-US";
+    endpointParams[@"page"] = @1;
+    [[HTTPRequest alloc] endPoint:EndPointGetPopular params:endpointParams request:^(TMBResponse * response, NSError * _Nonnull err) {
+        NSLog(@"1 done %@", response.results);
+    }];
+//    NSMutableDictionary *endpointParams = [[NSMutableDictionary alloc] initWithDictionary:[HTTPRequest getEndPointParams:EndPointGetGenres]];
+//    endpointParams[@"language"] = @"en-US";
+//    [[[HTTPRequest alloc] initWithEndpoint:EndPointGetGenres withParams:endpointParams] request:^(TMBResponse * response, NSError * _Nonnull err) {
+//        NSLog(@"1 done %@", response.results);
+//    }];
+//    
+//    endpoint = [[NSMutableDictionary alloc] initWithDictionary:HTTPRequest.endPoints[@"getPopular"]];
+//    endpoint[@"language"] = @"en-US";
+//    endpoint[@"page"] = @1;
+//    [[[HTTPRequest alloc] initWithEndpoint:endpoint] request:^(TMBResponse * response, NSError * _Nonnull err) {
+//        NSLog(@"2 done %@", response.results);
+//    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
