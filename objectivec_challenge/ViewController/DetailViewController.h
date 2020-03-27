@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MovieHeaderView.h"
+#import "TMBResponse.h"
 
 @interface DetailViewController : UIViewController
+
+@property (weak, nonatomic) TMBMovie *movie;
 
 @property (weak, nonatomic) IBOutlet MovieHeaderView *movieHeaderView;
 @property (weak, nonatomic) IBOutlet UILabel *overviewLabel;

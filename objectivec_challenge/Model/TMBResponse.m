@@ -1,10 +1,10 @@
-//
-//  TMBResponse.m
-//  objectivec_challenge
-//
-//  Created by Leonardo Reis on 24/03/20.
-//  Copyright © 2020 Leonardo Reis. All rights reserved.
-//
+////
+////  TMBResponse.m
+////  objectivec_challenge
+////
+////  Created by Leonardo Reis on 24/03/20.
+////  Copyright © 2020 Leonardo Reis. All rights reserved.
+////
 
 #import "TMBResponse.h"
 
@@ -26,6 +26,16 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface TMBDates (JSONConversion)
++ (instancetype)fromJSONDictionary:(NSDictionary *)dict;
+- (NSDictionary *)JSONDictionary;
+@end
+
+@interface TMBMovie (JSONConversion)
++ (instancetype)fromJSONDictionary:(NSDictionary *)dict;
+- (NSDictionary *)JSONDictionary;
+@end
+
+@interface TMBGenre (JSONConversion)
 + (instancetype)fromJSONDictionary:(NSDictionary *)dict;
 - (NSDictionary *)JSONDictionary;
 @end
@@ -83,11 +93,12 @@ NSString *_Nullable TMBResponseToJSON(TMBResponse *response, NSStringEncoding en
 {
     static NSDictionary<NSString *, NSString *> *properties;
     return properties = properties ? properties : @{
-        @"results": @"results",
         @"page": @"page",
-        @"total_results": @"totalResults",
+        @"results": @"results",
         @"dates": @"dates",
         @"total_pages": @"totalPages",
+        @"total_results": @"totalResults",
+        @"genres": @"genres",
     };
 }
 
@@ -110,7 +121,9 @@ NSString *_Nullable TMBResponseToJSON(TMBResponse *response, NSStringEncoding en
 {
     if (self = [super init]) {
         [self setValuesForKeysWithDictionary:dict];
+        _results = map(_results, λ(id x, [TMBMovie fromJSONDictionary:x]));
         _dates = [TMBDates fromJSONDictionary:(id)_dates];
+        _genres = map(_genres, λ(id x, [TMBGenre fromJSONDictionary:x]));
     }
     return self;
 }
@@ -136,7 +149,9 @@ NSString *_Nullable TMBResponseToJSON(TMBResponse *response, NSStringEncoding en
 
     // Map values that need translation
     [dict addEntriesFromDictionary:@{
+        @"results": NSNullify(map(_results, λ(id x, [x JSONDictionary]))),
         @"dates": NSNullify([_dates JSONDictionary]),
+        @"genres": NSNullify(map(_genres, λ(id x, [x JSONDictionary]))),
     }];
 
     return dict;
@@ -179,6 +194,111 @@ NSString *_Nullable TMBResponseToJSON(TMBResponse *response, NSStringEncoding en
 - (NSDictionary *)JSONDictionary
 {
     return [self dictionaryWithValuesForKeys:TMBDates.properties.allValues];
+}
+@end
+
+@implementation TMBMovie
++ (NSDictionary<NSString *, NSString *> *)properties
+{
+    static NSDictionary<NSString *, NSString *> *properties;
+    return properties = properties ? properties : @{
+        @"poster_path": @"posterPath",
+        @"adult": @"adult",
+        @"overview": @"overview",
+        @"release_date": @"releaseDate",
+        @"genres": @"genres",
+        @"genre_ids": @"genreIDS",
+        @"id": @"identifier",
+        @"original_title": @"originalTitle",
+        @"original_language": @"originalLanguage",
+        @"title": @"title",
+        @"backdrop_path": @"backdropPath",
+        @"popularity": @"popularity",
+        @"vote_count": @"voteCount",
+        @"video": @"video",
+        @"vote_average": @"voteAverage",
+    };
+}
+
++ (instancetype)fromJSONDictionary:(NSDictionary *)dict
+{
+    return dict ? [[TMBMovie alloc] initWithJSONDictionary:dict] : nil;
+}
+
+- (instancetype)initWithJSONDictionary:(NSDictionary *)dict
+{
+    if (self = [super init]) {
+        [self setValuesForKeysWithDictionary:dict];
+    }
+    return self;
+}
+
+- (void)setValue:(nullable id)value forKey:(NSString *)key
+{
+    id resolved = TMBMovie.properties[key];
+    if (resolved) [super setValue:value forKey:resolved];
+}
+
+- (NSDictionary *)JSONDictionary
+{
+    id dict = [[self dictionaryWithValuesForKeys:TMBMovie.properties.allValues] mutableCopy];
+
+    // Rewrite property names that differ in JSON
+    for (id jsonName in TMBMovie.properties) {
+        id propertyName = TMBMovie.properties[jsonName];
+        if (![jsonName isEqualToString:propertyName]) {
+            dict[jsonName] = dict[propertyName];
+            [dict removeObjectForKey:propertyName];
+        }
+    }
+
+    return dict;
+}
+@end
+
+@implementation TMBGenre
++ (NSDictionary<NSString *, NSString *> *)properties
+{
+    static NSDictionary<NSString *, NSString *> *properties;
+    return properties = properties ? properties : @{
+        @"id": @"identifier",
+        @"name": @"name",
+    };
+}
+
++ (instancetype)fromJSONDictionary:(NSDictionary *)dict
+{
+    return dict ? [[TMBGenre alloc] initWithJSONDictionary:dict] : nil;
+}
+
+- (instancetype)initWithJSONDictionary:(NSDictionary *)dict
+{
+    if (self = [super init]) {
+        [self setValuesForKeysWithDictionary:dict];
+    }
+    return self;
+}
+
+- (void)setValue:(nullable id)value forKey:(NSString *)key
+{
+    id resolved = TMBGenre.properties[key];
+    if (resolved) [super setValue:value forKey:resolved];
+}
+
+- (NSDictionary *)JSONDictionary
+{
+    id dict = [[self dictionaryWithValuesForKeys:TMBGenre.properties.allValues] mutableCopy];
+
+    // Rewrite property names that differ in JSON
+    for (id jsonName in TMBGenre.properties) {
+        id propertyName = TMBGenre.properties[jsonName];
+        if (![jsonName isEqualToString:propertyName]) {
+            dict[jsonName] = dict[propertyName];
+            [dict removeObjectForKey:propertyName];
+        }
+    }
+
+    return dict;
 }
 @end
 

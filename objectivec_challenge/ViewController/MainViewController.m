@@ -6,7 +6,8 @@
 //  Copyright © 2020 Leonardo Reis. All rights reserved.
 //
 
-#import "HTTPRequest.h"
+#import "TMBViewModel.h"
+#import "TMBResponse.h"
 #import "MainViewController.h"
 #import "DetailViewController.h"
 
@@ -16,16 +17,16 @@
 
 @implementation MainViewController
 {
-//    NSMutableArray<TMBMovie *> *popularMovies;
-//    NSMutableArray<TMBMovie *> *nowPlaying;
+    NSMutableArray<TMBMovie *> *popular;
+    NSMutableArray<TMBMovie *> *nowPlaying;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    nowPlaying = NSMutableArray.new;
-//    popularMovies = NSMutableArray.new;
+    popular = NSMutableArray.new;
+    nowPlaying = NSMutableArray.new;
     
     self.navigationController.navigationBar.prefersLargeTitles = YES;
 
@@ -37,36 +38,20 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.contentView.hidden = NO;
+    self.contentView.hidden = YES;
     self.loading.hidesWhenStopped = YES;
-//    [self.loading startAnimating];
-    [self.loading stopAnimating];
-    [self fetchMoviesUsingJSON];
+    [self.loading startAnimating];
+    [[TMBViewModel alloc] getFeed:^(NSMutableDictionary * _Nonnull feed, NSError * _Nonnull error) {
+        self->popular = feed[@"popular"];
+        self->nowPlaying = feed[@"nowPlaying"];
+        [self.tableView reloadData];
+        [self.loading stopAnimating];
+        self.contentView.hidden = NO;
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController.navigationBar.items[0] setTitle:@"Movies"];
-}
-
-- (void)fetchMoviesUsingJSON {
-    NSMutableDictionary *endpointParams = [[NSMutableDictionary alloc] initWithDictionary:[HTTPRequest getEndPointParams:EndPointGetPopular]];
-    endpointParams[@"language"] = @"en-US";
-    endpointParams[@"page"] = @1;
-    [[HTTPRequest alloc] endPoint:EndPointGetPopular params:endpointParams request:^(TMBResponse * response, NSError * _Nonnull err) {
-        NSLog(@"1 done %@", response.results);
-    }];
-//    NSMutableDictionary *endpointParams = [[NSMutableDictionary alloc] initWithDictionary:[HTTPRequest getEndPointParams:EndPointGetGenres]];
-//    endpointParams[@"language"] = @"en-US";
-//    [[[HTTPRequest alloc] initWithEndpoint:EndPointGetGenres withParams:endpointParams] request:^(TMBResponse * response, NSError * _Nonnull err) {
-//        NSLog(@"1 done %@", response.results);
-//    }];
-//    
-//    endpoint = [[NSMutableDictionary alloc] initWithDictionary:HTTPRequest.endPoints[@"getPopular"]];
-//    endpoint[@"language"] = @"en-US";
-//    endpoint[@"page"] = @1;
-//    [[[HTTPRequest alloc] initWithEndpoint:endpoint] request:^(TMBResponse * response, NSError * _Nonnull err) {
-//        NSLog(@"2 done %@", response.results);
-//    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -74,24 +59,21 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIFont* boldFont = [UIFont boldSystemFontOfSize:17];
-    UILabel *label = [[UILabel alloc] init];
-    [label setFont:boldFont];
-    label.text = @"Popular Movies";
-    label.backgroundColor = UIColor.systemBackgroundColor;
-    if (section == 0) {
-        label.text = @"Now Playing";
-        
-    }
-    return label;
+    UIView *viewLabel = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 346, 21)];
+    viewLabel.backgroundColor = UIColor.systemBackgroundColor;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, 346, 21)];
+    [label setFont:[UIFont systemFontOfSize:17 weight:UIFontWeightSemibold]];
+    label.text = (section == 0) ? @"Popular Movies" : @"Now Playing";
+    [viewLabel addSubview:label];
+    return viewLabel;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    if (section == 0) {
-//        return [nowPlaying count];
-//    }
-//    return [popularMovies count];
+    if (section == 0) {
+        return [nowPlaying count];
+    }
+    return [popular count];
     return 0;
 }
 
@@ -99,28 +81,31 @@
 {
     static NSString *simpleTableIdentifier = @"MovieListTableViewCell";
  
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    MovieListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
  
     if (cell == nil) {
         cell = (MovieListTableViewCell *)[MovieListTableViewCell cellFromNibNamed:simpleTableIdentifier];
     }
     
-//    NSString *movieJson = [[NSString alloc] init];
-//
-//    movieJson = indexPath.section == 0 ? nowPlaying[indexPath.row] : popularMovies[indexPath.row];
-
+    TMBMovie *movie = TMBMovie.new;
+    movie = indexPath.section == 0 ? nowPlaying[indexPath.row] : popular[indexPath.row];
+    
+    [cell setData:movie];
     return cell;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(TMBMovie *)sender {
     if ([segue.identifier isEqualToString:@"MovieDetail"]) {
-//      DetailViewController *d = (DetailViewController *)segue.destinationViewController;
+        DetailViewController *d = (DetailViewController *)segue.destinationViewController;
+        d.movie = sender;
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self performSegueWithIdentifier:@"MovieDetail" sender:self];
+    TMBMovie *movie = TMBMovie.new;
+    movie = indexPath.section == 0 ? nowPlaying[indexPath.row] : popular[indexPath.row];
+    [self performSegueWithIdentifier:@"MovieDetail" sender:movie];
 }
 
 @end

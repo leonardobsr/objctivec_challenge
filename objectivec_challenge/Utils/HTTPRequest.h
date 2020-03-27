@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)endPoint:(EndPoint)endPoint
         params:(NSDictionary *)params
         request:(void (^)(TMBResponse *, NSError *))completion;
++ (NSString *)getImageBaseUrl;
 
 @end
 

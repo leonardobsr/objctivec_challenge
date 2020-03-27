@@ -54,10 +54,14 @@
     NSURL *url = [NSURL URLWithString:urlString];
     [[NSURLSession.sharedSession dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSError *err;
-        TMBResponse *result = [TMBResponse fromData:data error:&error];
+        TMBResponse *result = [TMBResponse fromData:data error:&err];
         if (err) NSLog(@"Failed %@", err);
         completion(result, error);
     }] resume];
+}
+
++ (NSString *)getImageBaseUrl {
+    return @"https://image.tmdb.org/t/p/w500";
 }
 
 @end

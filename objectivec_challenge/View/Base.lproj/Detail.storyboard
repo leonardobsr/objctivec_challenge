@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Tx-1s-oLg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Tx-1s-oLg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +17,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="st9-Q0-6lx" customClass="MovieHeaderView">
                                 <rect key="frame" x="20" y="64" width="374" height="194"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="194" id="pNP-OI-gHg"/>
                                 </constraints>
@@ -31,16 +30,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4UY-fz-6Ck">
-                                <rect key="frame" x="20" y="295" width="374" height="547"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="4UY-fz-6Ck">
+                                <rect key="frame" x="16" y="295" width="382" height="547"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <mutableString key="text">Simba idolises his father, King Mufasa, and takes to heart his own royal destiny. But not everyone in the kingdom celebrates the new cub's arrival. Scar, Mufasa's brother—and former heir to the throne—has plans of his own. The battle for Pride Rock is ravaged with betrayal, tragedy and drama, ultimately resulting in Simba's exile. 
+                                <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
+                                <string key="text">Simba idolises his father, King Mufasa, and takes to heart his own royal destiny. But not everyone in the kingdom celebrates the new cub's arrival. Scar, Mufasa's brother—and former heir to the throne—has plans of his own. The battle for Pride Rock is ravaged with betrayal, tragedy and drama, ultimately resulting in Simba's exile. 
 
 With help from a curious pair of newfound friends, Simba will have to figure out how to grow up and take back what is rightfully his.Simba idolises his father, King Mufasa, and takes to heart his own royal destiny. But not everyone in the kingdom celebrates the new cub's arrival. Scar, Mufasa's brother—and former heir to the throne—has plans of his own. 
 
 The battle for Pride Rock is ravaged with betrayal, tragedy and drama, ultimately resulting in Simba's exile. With help from a curious pair of newfound friends, Simba will have to figure out how to grow up and take back what is rightfully his. 
 
-Simba idolises his father, King Mufasa, and takes to heart his own royal destiny. But not everyone in the kingdom celebrates the new cub's arrival. Scar, Mufasa's brother—and former heir to the throne—has plans of his own. The battle for Pride Rock is ravaged with betrayal, tragedy and drama, ultimately resulting in Simba's exile. With help from a curious pair of newfound friends, Simba will have to figure out how to grow up and take back what is rightfully his. </mutableString>
+Simba idolises his father, King Mufasa, and takes to heart his own royal destiny. But not everyone in the kingdom celebrates the new cub's arrival. Scar, Mufasa's brother—and former heir to the throne—has plans of his own. The battle for Pride Rock is ravaged with betrayal, tragedy and drama, ultimately resulting in Simba's exile. With help from a curious pair of newfound friends, Simba will have to figure out how to grow up and take back what is rightfully his. </string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -59,20 +59,20 @@ Simba idolises his father, King Mufasa, and takes to heart his own royal destiny
                             <constraint firstItem="st9-Q0-6lx" firstAttribute="leading" secondItem="cYX-Yt-Qrc" secondAttribute="leading" constant="20" id="RQH-V4-f4x"/>
                             <constraint firstItem="I6i-mc-GZP" firstAttribute="top" secondItem="st9-Q0-6lx" secondAttribute="bottom" constant="10" id="YPM-r7-gcM"/>
                             <constraint firstItem="I6i-mc-GZP" firstAttribute="leading" secondItem="cYX-Yt-Qrc" secondAttribute="leading" constant="20" id="d0K-Qb-rGC"/>
-                            <constraint firstItem="4UY-fz-6Ck" firstAttribute="leading" secondItem="cYX-Yt-Qrc" secondAttribute="leading" constant="20" id="jgD-OW-7UC"/>
+                            <constraint firstItem="4UY-fz-6Ck" firstAttribute="leading" secondItem="cYX-Yt-Qrc" secondAttribute="leading" constant="16" id="jgD-OW-7UC"/>
                             <constraint firstItem="4ud-h9-arT" firstAttribute="centerX" secondItem="gmJ-6j-Ihm" secondAttribute="centerX" id="l5m-gm-XJK"/>
                             <constraint firstItem="cYX-Yt-Qrc" firstAttribute="trailing" secondItem="st9-Q0-6lx" secondAttribute="trailing" constant="20" id="r1G-ZB-KwO"/>
                             <constraint firstItem="4ud-h9-arT" firstAttribute="centerY" secondItem="gmJ-6j-Ihm" secondAttribute="centerY" id="uaR-J1-wnb"/>
-                            <constraint firstItem="cYX-Yt-Qrc" firstAttribute="trailing" secondItem="4UY-fz-6Ck" secondAttribute="trailing" constant="20" id="vnV-bH-OWy"/>
+                            <constraint firstItem="cYX-Yt-Qrc" firstAttribute="trailing" secondItem="4UY-fz-6Ck" secondAttribute="trailing" constant="16" id="vnV-bH-OWy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cYX-Yt-Qrc"/>
                     </view>
                     <navigationItem key="navigationItem" title="Movie Details" largeTitleDisplayMode="never" id="rvA-7J-urv"/>
                     <connections>
-                        <outlet property="loading" destination="4ud-h9-arT" id="FhA-U8-Yhh"/>
-                        <outlet property="movieHeaderView" destination="st9-Q0-6lx" id="pHN-PC-yrt"/>
-                        <outlet property="overviewLabel" destination="I6i-mc-GZP" id="R94-md-9je"/>
-                        <outlet property="textView" destination="4UY-fz-6Ck" id="Tlq-YU-3tp"/>
+                        <outlet property="loading" destination="4ud-h9-arT" id="l87-W3-V7e"/>
+                        <outlet property="movieHeaderView" destination="st9-Q0-6lx" id="q4P-6z-HyH"/>
+                        <outlet property="overviewLabel" destination="I6i-mc-GZP" id="nZo-Ks-y9R"/>
+                        <outlet property="textView" destination="4UY-fz-6Ck" id="S3g-Ck-Tuh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FSU-Kq-pDi" sceneMemberID="firstResponder"/>

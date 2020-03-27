@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 
+- (void)setImage:(NSString *)url;
+
 @end
 
 NS_ASSUME_NONNULL_END

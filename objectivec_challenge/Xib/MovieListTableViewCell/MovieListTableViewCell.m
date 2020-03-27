@@ -35,17 +35,13 @@
     return customCell;
 }
 
-//+(void)setTheName:(NSString *)fullName{
-//    self.fullName = fullName;
-//}
-//
-//+(NSString *)theName{
-//    return self.fullName;
-//}
-
-+ (void)printStuff:(NSString *)stuff
-{
-    [self printStuff:stuff];
+- (void)setData:(TMBMovie *)movie {
+    [self.movieHeaderView.movieCoverView setImage:movie.posterPath];
+    [self.movieHeaderView.titleLabel setFont:[UIFont systemFontOfSize:14 weight:UIFontWeightSemibold]];
+    [self.movieHeaderView.textLabel setFont:[UIFont systemFontOfSize:13 weight:UIFontWeightRegular]];
+    self.movieHeaderView.titleLabel.text = movie.title;
+    self.movieHeaderView.textLabel.text = [NSString stringWithFormat:@"%@%@", [movie.overview substringWithRange:NSMakeRange(0, MIN([movie.overview length], 122))], @"..."];
+    [self.movieHeaderView.movieRatingView setRating:[NSString stringWithFormat:@"%@", movie.voteAverage]];
 }
 
 @end

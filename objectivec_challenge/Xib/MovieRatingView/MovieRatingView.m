@@ -37,4 +37,9 @@
     return self;
 }
 
+- (void)setRating:(NSString *_Nullable)rating {
+    self.ratingLabel.textColor = [UIColor colorWithRed:0.51 green:0.51 blue:0.51 alpha:1];
+    self.ratingLabel.text = [NSString stringWithFormat:@"%@", (rating == nil) ? @"0.0" : rating];
+}
+
 @end

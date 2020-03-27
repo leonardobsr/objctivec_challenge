@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 
+- (void)setRating:(NSString *_Nullable)rating;
+
 @end
 
 NS_ASSUME_NONNULL_END
