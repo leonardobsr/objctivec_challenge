@@ -23,13 +23,14 @@
             <rect key="frame" x="0.0" y="0.0" width="346" height="118"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="D3C-t7-OdT">
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="D3C-t7-OdT">
                     <rect key="frame" x="0.0" y="0.0" width="346" height="118"/>
                     <subviews>
                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="79" placeholderIntrinsicHeight="118" translatesAutoresizingMaskIntoConstraints="NO" id="gwr-wd-giN" customClass="MovieCoverView">
                             <rect key="frame" x="0.0" y="0.0" width="79" height="118"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="128" id="41o-G7-Lls"/>
+                                <constraint firstAttribute="width" secondItem="gwr-wd-giN" secondAttribute="height" multiplier="79 : 118" id="9XQ-Ln-ZEp"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="79" id="ePT-JW-C7w"/>
                             </constraints>
                         </view>

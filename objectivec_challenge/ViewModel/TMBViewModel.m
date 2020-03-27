@@ -73,30 +73,39 @@
     });
 }
 - (void)getGenres {
-    NSMutableDictionary *endpointParams = [[NSMutableDictionary alloc] initWithDictionary:[HTTPRequest getEndPointParams:EndPointGetPopular]];
-    endpointParams[@"language"] = @"en-US";
-    endpointParams[@"page"] = @1;
-    [[HTTPRequest alloc] endPoint:EndPointGetPopular params:endpointParams request:^(TMBResponse * response, NSError * _Nonnull err) {
-        NSLog(@"1 done %@", response.results);
-    }];
+//    NSMutableDictionary *endpointParams = [[NSMutableDictionary alloc] initWithDictionary:[HTTPRequest getEndPointParams:EndPointGetPopular]];
+//    endpointParams[@"language"] = @"en-US";
+//    endpointParams[@"page"] = @1;
+//    [[HTTPRequest alloc] endPoint:EndPointGetPopular params:endpointParams request:^(TMBResponse * response, NSError * _Nonnull err) {
+//        NSLog(@"1 done %@", response.results);
+//    }];
 }
 - (void)params:(NSDictionary *)params getPopular:(void (^)(NSMutableArray *, NSError *))completion {
-    NSMutableDictionary *endpointParams = [[NSMutableDictionary alloc] initWithDictionary:[HTTPRequest getEndPointParams:EndPointGetPopular]];
-   endpointParams[@"language"] = @"en-US";
-   endpointParams[@"page"] = @1;
-   [[HTTPRequest alloc] endPoint:EndPointGetPopular params:endpointParams request:^(TMBResponse * response, NSError * _Nonnull err) {
-       NSLog(@"1 done %@", response.results);
-   }];
+//    NSMutableDictionary *endpointParams = [[NSMutableDictionary alloc] initWithDictionary:[HTTPRequest getEndPointParams:EndPointGetPopular]];
+//   endpointParams[@"language"] = @"en-US";
+//   endpointParams[@"page"] = @1;
+//   [[HTTPRequest alloc] endPoint:EndPointGetPopular params:endpointParams request:^(TMBResponse * response, NSError * _Nonnull err) {
+//       NSLog(@"1 done %@", response.results);
+//   }];
 }
 - (void)params:(NSDictionary *)params getNowPlaying:(void (^)(NSMutableArray *, NSError *))completion {
-    NSMutableDictionary *endpointParams = [[NSMutableDictionary alloc] initWithDictionary:[HTTPRequest getEndPointParams:EndPointGetPopular]];
-    endpointParams[@"language"] = @"en-US";
-    endpointParams[@"page"] = @1;
-    [[HTTPRequest alloc] endPoint:EndPointGetPopular params:endpointParams request:^(TMBResponse * response, NSError * _Nonnull err) {
-        NSLog(@"1 done %@", response.results);
-    }];
+//    NSMutableDictionary *endpointParams = [[NSMutableDictionary alloc] initWithDictionary:[HTTPRequest getEndPointParams:EndPointGetPopular]];
+//    endpointParams[@"language"] = @"en-US";
+//    endpointParams[@"page"] = @1;
+//    [[HTTPRequest alloc] endPoint:EndPointGetPopular params:endpointParams request:^(TMBResponse * response, NSError * _Nonnull err) {
+//        NSLog(@"1 done %@", response.results);
+//    }];
 }
-- (void)searchMovie {}
+
+- (void)query:(NSString *)query_ searchMovie:(void (^)(NSMutableDictionary *, NSError *))completion {
+//    NSMutableDictionary *endpointParams = [[NSMutableDictionary alloc] initWithDictionary:[HTTPRequest getEndPointParams:EndPointSearchMovie]];
+//    endpointParams[@"language"] = @"en-US";
+//    [[HTTPRequest alloc] endPoint:EndPointSearchMovie params:endpointParams request:^(TMBResponse * _Nonnull response, NSError * _Nonnull err) {
+//        for (TMBMovie *movie in response.results) {
+//            [feed[@"nowPlaying"] addObject:movie];
+//        }
+//    }];
+}
 
 - (NSString *)getImageUrl:(NSString *)imageUrl {
     return [NSString stringWithFormat: @"%@%@", [HTTPRequest getImageBaseUrl], imageUrl];
@@ -107,7 +116,7 @@
     for (NSNumber *genreid in genresIds) {
         for (TMBGenre *genre in genres) {
             if (genre.identifier == genreid) {
-                if ([genres indexOfObject:genre] == 0) {
+                if ([genresIds indexOfObject:genreid] == 0) {
                     genresString = [NSMutableString stringWithFormat: @"%@%@", genresString, genre.name];
                 } else {
                     genresString = [NSMutableString stringWithFormat: @"%@%@ %@", genresString, @",", genre.name];

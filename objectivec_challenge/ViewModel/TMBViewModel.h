@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
         getPopular:(void (^)(NSMutableArray *, NSError *))completion;
 - (void)params:(NSDictionary *)params
         getNowPlaying:(void (^)(NSMutableArray *, NSError *))completion;
-- (void)searchMovie;
+- (void)query:(NSString *)query_ searchMovie:(void (^)(NSMutableDictionary *, NSError *))completion;
 
 @end
 

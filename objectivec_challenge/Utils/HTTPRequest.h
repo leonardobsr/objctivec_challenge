@@ -12,7 +12,8 @@
 typedef NS_ENUM(NSUInteger, EndPoint) {
     EndPointGetGenres = 1,
     EndPointGetPopular = 2,
-    EndPointGetNowPlaying = 3
+    EndPointGetNowPlaying = 3,
+    EndPointSearchMovie = 4,
 };
 
 NS_ASSUME_NONNULL_BEGIN

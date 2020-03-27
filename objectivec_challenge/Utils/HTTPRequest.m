@@ -27,6 +27,9 @@
              @(EndPointGetNowPlaying) : @{
                      @"language": @"",
                      @"page": @""
+             },
+             @(EndPointSearchMovie) : @{
+                     @"query": @""
              }
     };
 }
@@ -40,7 +43,8 @@
     return @{
         @(EndPointGetGenres) : [NSString stringWithFormat: @"genre/movie/list?%@&language=%@", HTTPRequest.apiKey, params[@"language"]],
         @(EndPointGetPopular) : [NSString stringWithFormat: @"movie/popular?%@&language=%@&page=%@", HTTPRequest.apiKey, params[@"language"], params[@"page"]],
-        @(EndPointGetNowPlaying) : [NSString stringWithFormat: @"movie/now_playing?%@&language=%@&page=%@", HTTPRequest.apiKey, params[@"language"], params[@"page"]]
+        @(EndPointGetNowPlaying) : [NSString stringWithFormat: @"movie/now_playing?%@&language=%@&page=%@", HTTPRequest.apiKey, params[@"language"], params[@"page"]],
+        @(EndPointSearchMovie) : [NSString stringWithFormat: @"search/movie?%@&query=%@", HTTPRequest.apiKey, params[@"query"]]
     };
 }
 
